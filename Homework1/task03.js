@@ -1,10 +1,9 @@
 function doubleChars(str) {
-    let result = '';
+  let result = "";
 
-    for (let i = 0; i < str.length; i++)
-        result += str[i] + str[i];
+  for (let i = 0; i < str.length; i++) result += str[i] + str[i];
 
-    return result;
+  return result;
 }
 
 const result = doubleChars("Hello World");
