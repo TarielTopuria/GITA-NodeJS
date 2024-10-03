@@ -1,0 +1,12 @@
+{
+  "name": "Homework6",
+  "version": "1.0.0",
+  "main": "task02.js",
+  "type": "module",
+  "scripts": {
+    "start": "node task02.js"
+  },
+  "dependencies": {
+    "node-fetch": "^3.x.x"
+  }
+}
