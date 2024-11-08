@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "Honda civic",
+    "price": "15000",
+    "color": "Black"
+  },
+  {
+    "id": 2,
+    "name": "Honda Accord",
+    "price": "22000",
+    "color": "Blue"
+  }
+]
