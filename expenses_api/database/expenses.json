@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1731863058157,
+    "title": "Updated Lunch",
+    "amount": 15,
+    "date": "2024-11-18"
+  },
+  {
+    "id": 1731863083099,
+    "title": "Dinner",
+    "amount": 20.75,
+    "date": "2024-11-16"
+  },
+  {
+    "id": 1731863093041,
+    "title": "Groceries",
+    "amount": 50,
+    "date": "2024-11-15"
+  },
+  {
+    "id": 1731863100980,
+    "title": "Snacks",
+    "amount": 5.5,
+    "date": "2024-11-13"
+  }
+]
