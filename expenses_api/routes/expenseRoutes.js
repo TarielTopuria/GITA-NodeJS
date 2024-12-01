@@ -1,48 +1,49 @@
 import { Router } from 'express';
-import expenseService from '../services/expenseService.js';
+import Expense from '../models/Expense.js';
 
 const router = Router();
 
-router.get('/', (req, res) => {
-  const expenses = expenseService.getAllExpenses();
+router.get('/', async (req, res) => {
+  const { page = 1, limit = 20 } = req.query;
+  const options = {
+    page: Math.max(1, parseInt(page)),
+    limit: Math.min(20, Math.max(1, parseInt(limit))),
+  };
+  const expenses = await Expense.find()
+    .skip((options.page - 1) * options.limit)
+    .limit(options.limit);
   res.render('index', { expenses });
 });
 
-router.get('/create', (req, res) => {
-  res.render('create');
-});
-
-router.post('/', (req, res) => {
-  const { title, amount, date } = req.body;
-  expenseService.createExpense({ title, amount, date });
-  res.redirect('/expenses');
-});
-
-router.get('/:id/edit', (req, res) => {
-  const expense = expenseService.getExpenseById(req.params.id);
-  res.render('update', { expense });
-});
-
-router.post('/update/:id', (req, res) => {
-  const { id } = req.params;
-  const { title, amount, date } = req.body;
-
-  try {
-    expenseService.updateExpenseById(id, { title, amount, date });
-    res.redirect('/expenses');
-  } catch (error) {
-    res.status(404).render('error', { error: error.message });
-  }
-});
-
-router.delete('/:id', (req, res) => {
-  expenseService.deleteExpenseById(req.params.id);
-  res.redirect('/expenses');
-});
-
-router.get('/:id', (req, res) => {
-  const expense = expenseService.getExpenseById(req.params.id);
+router.get('/:id', async (req, res) => {
+  const expense = await Expense.findById(req.params.id);
+  if (!expense)
+    return res.status(404).render('error', { error: 'Expense not found' });
   res.render('details', { expense });
+});
+
+router.post('/', async (req, res) => {
+  const { title, amount, date } = req.body;
+  const newExpense = new Expense({ title, amount, date });
+  await newExpense.save();
+  res.redirect('/expenses');
+});
+
+router.post('/update/:id', async (req, res) => {
+  const { title, amount, date } = req.body;
+  const updatedExpense = await Expense.findByIdAndUpdate(
+    req.params.id,
+    { title, amount, date },
+    { new: true }
+  );
+  if (!updatedExpense)
+    return res.status(404).render('error', { error: 'Expense not found' });
+  res.redirect('/expenses');
+});
+
+router.post('/delete/:id', async (req, res) => {
+  await Expense.findByIdAndDelete(req.params.id);
+  res.redirect('/expenses');
 });
 
 export default router;

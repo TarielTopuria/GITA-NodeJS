@@ -1,9 +1,12 @@
 import express from 'express';
-import expenseRoutes from './routes/expenseRoutes.js';
 import path from 'path';
-import methodOverride from 'method-override';
+import expenseRoutes from './routes/expenseRoutes.js';
+import userRoutes from './routes/userRoutes.js';
+import connectToDatabase from './utils/database.js';
 
 const app = express();
+
+connectToDatabase();
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(path.resolve(), 'views'));
@@ -13,10 +16,11 @@ app.use(express.static(path.join(path.resolve(), 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(methodOverride('_method'));
 app.use('/expenses', expenseRoutes);
+app.use('/users', userRoutes);
 
 app.use((err, req, res, next) => {
+  console.error(err.stack);
   res.status(500).render('error', { error: 'Internal Server Error' });
 });
 
