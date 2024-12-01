@@ -1,4 +1,4 @@
-import fileOperations from "../utils/fileOperations.js";
+import fileOperations from '../utils/fileOperations.js';
 const { readData, writeData } = fileOperations;
 
 const getExpenses = (req, res) => {
@@ -17,7 +17,7 @@ const getExpenses = (req, res) => {
   } catch (error) {
     res
       .status(500)
-      .json({ error: "An error occurred while fetching expenses" });
+      .json({ error: 'An error occurred while fetching expenses' });
   }
 };
 
@@ -28,12 +28,12 @@ const getExpenseById = (req, res) => {
     const expense = expenses.find((e) => e.id === parseInt(id));
 
     if (!expense) {
-      return res.status(404).json({ error: "Expense not found" });
+      return res.status(404).json({ error: 'Expense not found' });
     }
 
     res.status(200).json(expense);
   } catch (error) {
-    res.status(500).json({ error: "An error occurred" });
+    res.status(500).json({ error: 'An error occurred' });
   }
 };
 
@@ -44,7 +44,7 @@ const createExpense = (req, res) => {
     if (!title || !amount || !date) {
       return res
         .status(400)
-        .json({ error: "Title, amount, and date are required" });
+        .json({ error: 'Title, amount, and date are required' });
     }
 
     const expenses = readData();
@@ -56,11 +56,12 @@ const createExpense = (req, res) => {
   } catch (error) {
     res
       .status(500)
-      .json({ error: "An error occurred while creating the expense" });
+      .json({ error: 'An error occurred while creating the expense' });
   }
 };
 
 const updateExpense = (req, res) => {
+  console.log('comes in controller');
   try {
     const { id } = req.params;
     const { title, amount, date } = req.body;
@@ -68,9 +69,11 @@ const updateExpense = (req, res) => {
     const expenses = readData();
     const expenseIndex = expenses.findIndex((e) => e.id === parseInt(id));
 
+    console.log('comes in controller 2');
     if (expenseIndex === -1) {
-      return res.status(404).json({ error: "Expense not found" });
+      return res.status(404).json({ error: 'Expense not found' });
     }
+    console.log('comes in controller3');
 
     const updatedExpense = {
       ...expenses[expenseIndex],
@@ -79,6 +82,7 @@ const updateExpense = (req, res) => {
       ...(date && { date }),
     };
 
+    console.log('comes in controller4');
     expenses[expenseIndex] = updatedExpense;
     writeData(expenses);
 
@@ -86,7 +90,7 @@ const updateExpense = (req, res) => {
   } catch (error) {
     res
       .status(500)
-      .json({ error: "An error occurred while updating the expense" });
+      .json({ error: 'An error occurred while updating the expense' });
   }
 };
 
@@ -95,26 +99,26 @@ const deleteExpense = (req, res) => {
     const { id } = req.params;
     const authKey = req.headers.authorization;
 
-    const validKey = "admin123";
+    const validKey = 'admin123';
     if (authKey !== validKey) {
-      return res.status(401).json({ error: "Unauthorized" });
+      return res.status(401).json({ error: 'Unauthorized' });
     }
 
     const expenses = readData();
     const expenseIndex = expenses.findIndex((e) => e.id === parseInt(id));
 
     if (expenseIndex === -1) {
-      return res.status(404).json({ error: "Expense not found" });
+      return res.status(404).json({ error: 'Expense not found' });
     }
 
     expenses.splice(expenseIndex, 1);
     writeData(expenses);
 
-    res.status(200).json({ message: "Expense deleted successfully" });
+    res.status(200).json({ message: 'Expense deleted successfully' });
   } catch (error) {
     res
       .status(500)
-      .json({ error: "An error occurred while deleting the expense" });
+      .json({ error: 'An error occurred while deleting the expense' });
   }
 };
 

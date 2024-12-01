@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Manager - GITA / TATO</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Expense Manager</h1>
+    <a href="/expenses/create">Add New Expense</a>
+    <ul>
+      <% expenses.forEach(expense => { %>
+        <li>
+          <strong><%= expense.title %></strong> - $<%= expense.amount %>
+          <div class="btns">
+            <a class="detailsBtn" href="/expenses/<%= expense.id %>">Details</a>
+            <a class="editBtn" href="/expenses/<%= expense.id %>/edit">Edit</a>
+            <form action="/expenses/<%= expense.id %>?_method=DELETE" method="POST" style="display:inline;">
+              <button class="deleteBtn" type="submit">Delete</button>
+            </form>
+          </div>          
+        </li>
+      <% }) %>
+    </ul>
+  </div>
+</body>
+</html>

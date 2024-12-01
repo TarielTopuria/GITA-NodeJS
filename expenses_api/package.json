@@ -14,7 +14,9 @@
   "description": "A simple API for managing expenses",
   "dependencies": {
     "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
     "express": "^4.21.1",
+    "method-override": "^3.0.0",
     "nodemon": "^2.0.22"
   },
   "devDependencies": {

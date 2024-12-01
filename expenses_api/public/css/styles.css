@@ -1,0 +1,126 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Container for pages */
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Links */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+ul li:last-child {
+  border-bottom: none;
+}
+
+/* Buttons Container */
+.btns {
+  display: flex; /* Flexbox layout for alignment */
+  gap: 10px; /* Space between buttons */
+  margin-top: 10px;
+}
+
+/* Buttons */
+.detailsBtn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  height: 48px;
+  align-content: center;
+  width: 200px;
+}
+
+.detailsBtn:hover {
+  background-color: #0056b3;
+}
+
+.editBtn {
+  background-color: #00ff40;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  height: 48px;
+  align-content: center;
+  width: 200px;
+}
+
+.editBtn:hover {
+  background-color: #00b336;
+}
+
+.deleteBtn {
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  height: 48px;
+  align-content: center;
+  width: 400px;
+}
+
+.deleteBtn:hover {
+  background-color: #b31b00;
+}
+
+/* Form Styles */
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Error Page */
+.error-container {
+  text-align: center;
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 20px;
+  border-radius: 5px;
+}

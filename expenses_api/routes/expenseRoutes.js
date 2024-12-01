@@ -1,27 +1,48 @@
 import { Router } from 'express';
-import expenseController from '../controllers/expenseController.js';
-import validateRequiredFields from '../middlewares/validateRequiredFields.js';
-import checkDeleteAuthorization from '../middlewares/checkDeleteAuthorization.js';
-import randomRequestMiddleware from '../middlewares/randomRequestMiddleware.js';
-
-const {
-  getExpenses,
-  getExpenseById,
-  createExpense,
-  updateExpense,
-  deleteExpense,
-} = expenseController;
+import expenseService from '../services/expenseService.js';
 
 const router = Router();
 
-router.get('/random', randomRequestMiddleware, (req, res) => {
-  res.status(200).json({ message: 'Request passed!' });
+router.get('/', (req, res) => {
+  const expenses = expenseService.getAllExpenses();
+  res.render('index', { expenses });
 });
 
-router.get('/', getExpenses);
-router.get('/:id', getExpenseById);
-router.post('/', validateRequiredFields, createExpense);
-router.put('/:id', updateExpense);
-router.delete('/:id', checkDeleteAuthorization, deleteExpense);
+router.get('/create', (req, res) => {
+  res.render('create');
+});
+
+router.post('/', (req, res) => {
+  const { title, amount, date } = req.body;
+  expenseService.createExpense({ title, amount, date });
+  res.redirect('/expenses');
+});
+
+router.get('/:id/edit', (req, res) => {
+  const expense = expenseService.getExpenseById(req.params.id);
+  res.render('update', { expense });
+});
+
+router.post('/update/:id', (req, res) => {
+  const { id } = req.params;
+  const { title, amount, date } = req.body;
+
+  try {
+    expenseService.updateExpenseById(id, { title, amount, date });
+    res.redirect('/expenses');
+  } catch (error) {
+    res.status(404).render('error', { error: error.message });
+  }
+});
+
+router.delete('/:id', (req, res) => {
+  expenseService.deleteExpenseById(req.params.id);
+  res.redirect('/expenses');
+});
+
+router.get('/:id', (req, res) => {
+  const expense = expenseService.getExpenseById(req.params.id);
+  res.render('details', { expense });
+});
 
 export default router;
