@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update User</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <form class="user-update">
+      <label for="id">User ID:</label>
+      <input type="number" id="id" disabled name="id" value="<%= user.id %>" />
+
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName" value="<%= user.firstName %>" />
+
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName" value="<%= user.lastName %>" />
+
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" value="<%= user.age %>" />
+
+      <label for="mail">Email:</label>
+      <input type="email" id="mail" name="mail" value="<%= user.email %>" />
+
+      <label for="description">Description:</label>
+      <input type="text" id="description" name="description" value="<%= user.description %>" />
+
+      <button type="submit">Update User</button>
+    </form>
+    <%- include('../../partials/footer') %>
+
+    <script src="/js/users/user.update.js"></script>
+  </body>
+</html>
