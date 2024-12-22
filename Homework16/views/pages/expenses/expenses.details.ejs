@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>expense details</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <div class="card">
+      <h2>Id: <%= expense.id%></h2>
+      <h2>Type: <%= expense.type%></h2>
+      <h2>Cost: <%= expense.cost %> ₾</h2>
+      <h2>Quantity: <%= expense.quantity%></h2>
+    </div>
+
+    <%- include('../../partials/footer') %>
+  </body>
+</html>

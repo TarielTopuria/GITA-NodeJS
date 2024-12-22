@@ -1,0 +1,104 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+h1, h2 {
+  margin: 0.5em 0;
+  color: #444;
+}
+
+form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+form input, form button, .createBtn {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+form button, .createBtn {
+  background-color: #5cb85c;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+form button:hover, .createBtn:hover {
+  background-color: #4cae4c;
+}
+
+/* Card Styles */
+.card {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 15px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+  margin: 0.3em 0;
+  font-size: 1.2em;
+}
+
+.card a, .card button {
+  margin: 5px 5px 0 0;
+  padding: 8px 12px;
+  font-size: 0.9em;
+  text-decoration: none;
+  color: white;
+  background-color: #0275d8;
+  border: none;
+  border-radius: 3px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.card a:hover, .card button:hover {
+  background-color: #025aa5;
+}
+
+.card button {
+  background-color: #d9534f;
+  width: 60%;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+.card button:hover {
+  background-color: #c9302c;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  font-size: 0.9em;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add User</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <form class="user-create">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" name="firstName" />
+
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" name="lastName" />
+
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" />
+
+      <label for="mail">Email:</label>
+      <input type="email" id="mail" name="mail" />
+
+      <label for="description">Description:</label>
+      <input type="text" id="description" name="description" />
+
+      <button>Add New User</button>
+    </form>
+    <%- include('../../partials/footer') %>
+
+    <script src="/js/users/user.add.js"></script>
+  </body>
+</html>

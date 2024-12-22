@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main Page - Expenses</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <button onclick="createExpense()" class="createBtn">Create Expense</button>
+    <% response.forEach(expense => { %>
+    <div class="card">
+      <h2>Type: <%= expense.type %></h2>
+      <h2>Cost: <%= expense.cost %> ₾</h2>
+      <a href="<%= expense.id %>">Show more</a>
+      <a href="putExpense/<%= expense.id %>">Update</a>
+      <button onclick="handleDelete('<%= expense.id  %>')">Delete</button>
+    </div>
+    <% }) %> <%- include('../../partials/footer') %>
+
+    <script src="/js/expenses/expenses.home.js"></script>
+  </body>
+</html>

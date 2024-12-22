@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main Page - Users</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <button onclick="createUser()" class="createBtn">Create User</button>
+    <% response.forEach(user => { %>
+    <div class="card">
+      <h2>Name: <%= user.firstName %> <%= user.lastName %></h2>
+      <h2>Age: <%= user.age%></h2>
+      <a href="<%= user.id %>">Show more</a>
+      <a href="putUser/<%= user.id %>">Update</a>
+      <button onclick="handleDelete('<%= user.id  %>')">Delete</button>
+    </div>
+    <% }) %> <%- include('../../partials/footer') %>
+
+    <script src="/js/users/user.home.js"></script>
+  </body>
+</html>
