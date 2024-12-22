@@ -57,7 +57,6 @@ function calculateFactorial(n: number): number {
   }
 }
 
-// Example usage
 const rectangle: Rectangle = { width: 5, height: 8 };
 const circle: Circle = { radius: 3 };
 
